@@ -32,6 +32,26 @@ public:
 	
 	UFUNCTION(BlueprintPure, Category = "Kart")
 	bool CanMove() const {return bCanMove; }
+	
+	void EnterLapZone(int32 ZoneIndex);
+	
+	UFUNCTION(BlueprintCallable, Category = "Kart|Race")
+	void CompleteLap();
+	
+	UFUNCTION(BlueprintCallable, Category = "Kart|Race")
+	void ResetRaceProgress();
+	
+	UFUNCTION(BlueprintCallable, Category = "Kart|Race")
+	int32 GetCurrentLap() const {return CurrentLap; }
+	
+	UFUNCTION(BlueprintCallable, Category = "Kart|Race")
+	bool HasFinishedRace() const {return bHasFinishedRace; }
+	
+	UFUNCTION(BlueprintCallable, Category = "Kart|Race")
+	float GetFinishTime() const {return FinishTime; }
+	
+	UFUNCTION(BlueprintPure, Category = "Kart|Race")
+	FVector GetMoveDirection() const;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -204,6 +224,7 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Kart|Visual")
 	bool bShowDebug = true;
 	
+	/*---------State----------*/
 	UPROPERTY(EditAnywhere, Category = "Kart|State")
 	float CurrentSpeed = 0.f;
 	
@@ -242,6 +263,19 @@ protected:
 	
 	UPROPERTY(VisibleAnywhere, Category = "Kart|State")
 	bool bCanMove = true;
+	
+	/*-----Race-----*/
+	UPROPERTY(VisibleAnywhere, Category = "Kart|Race")
+	int32 CurrentLap = 1;
+	
+	UPROPERTY(VisibleAnywhere, Category = "Kart|Race")
+	int32 NextCheckpoint = 1;
+	
+	UPROPERTY(VisibleAnywhere, Category = "Kart|Race")
+	bool bHasFinishedRace = false;
+	
+	UPROPERTY(VisibleAnywhere, Category = "Kart|Race")
+	float FinishTime = 0.f;
 	
 private:
 	

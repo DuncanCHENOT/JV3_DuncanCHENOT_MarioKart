@@ -10,14 +10,14 @@
     <Platform Name="Win64-arm64ec" />
   </Configurations>
   <Folder Name="/Engine/">
-    <Project Path="Intermediate/ProjectFiles/UE5.vcxproj" Id="1a0ae8be-3610-3769-b3ba-dc48a9d41ac9">
+    <Project Path="Intermediate/ProjectFiles/UE5.vcxproj" Id="4590bf7d-0ec6-356a-a56f-728fbb43d9e6">
       <BuildType Project="BuiltWithUnrealBuildTool" />
       <Platform Project="Win64" />
       <Build Project="false" />
     </Project>
   </Folder>
   <Folder Name="/Games/">
-    <Project Path="Intermediate/ProjectFiles/DuncanCHENOT_Kart.vcxproj" Id="e51ee8e8-782c-3cb3-9f26-c14cd1fbfc21">
+    <Project Path="Intermediate/ProjectFiles/DuncanCHENOT_Kart.vcxproj" Id="b099d25f-8490-3a31-a8fe-bfdddfaa9a7b">
       <BuildType Solution="DebugGame Editor|Win64" Project="DebugGame_Editor" />
       <BuildType Solution="DebugGame Editor|Win64-arm64" Project="Win64_arm64_DebugGame_Editor" />
       <BuildType Solution="DebugGame Editor|Win64-arm64ec" Project="Win64_arm64ec_DebugGame_Editor" />

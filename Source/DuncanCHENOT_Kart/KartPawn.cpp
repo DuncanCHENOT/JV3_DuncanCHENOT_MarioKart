@@ -14,6 +14,7 @@
 //#include "InputActionValue.h"
 //#include "KartGameMode.h"
 #include "EnhancedInputComponent.h"
+#include "KartGameMode.h"
 #include "GameFramework/SpringArmComponent.h"
 
 //Max high between ground and wheels to be considered on the ground
@@ -56,6 +57,7 @@ AKartPawn::AKartPawn()
 	
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArm->SetupAttachment(CollisionSphere);
+	SpringArm->SetRelativeRotation(FRotator(-15.f,0.f,0.f));
 	SpringArm->TargetArmLength = 600.f;
 	SpringArm-> SocketOffset = FVector(0.f, 0.f, 100.f);
 	
@@ -83,15 +85,69 @@ void AKartPawn::BeginPlay()
 	WheelRearLeftBaseRotation = WheelRearLeft->GetRelativeRotation();
 	WheelRearRightBaseRotation = WheelRearRight->GetRelativeRotation();
 	
-	/*if (const AKartGameMode* GameMode = GetWorld()->GetAuthGameMode<AKartGameMode>())
-	//{
-	//	bCanMove = GameMode
-	*/
+	if (const AKartGameMode* GameMode = GetWorld()->GetAuthGameMode<AKartGameMode>())
+	{
+		bCanMove = GameMode->IsRaceStarted();
+	}
+	
 }
 
 void AKartPawn::SetCanMove(bool bInCanMove)
 {
 	bCanMove = bInCanMove;
+}
+
+FVector AKartPawn::GetMoveDirection() const
+{
+	return GetActorForwardVector() * FMath::Sign(CurrentSpeed);
+}
+
+void AKartPawn::EnterLapZone(int32 ZoneIndex)
+{
+	const AKartGameMode* GameMode = GetWorld()->GetAuthGameMode<AKartGameMode>();
+	
+	if (GameMode == nullptr || !GameMode->IsRaceStarted() || bHasFinishedRace)
+	{
+		return;
+	}
+	
+	if (ZoneIndex == NextCheckpoint)
+	{
+		++NextCheckpoint;
+	}
+	else if (ZoneIndex == 0 && NextCheckpoint > GameMode->GetCheckpointCount())
+	{
+		CompleteLap();
+	}
+}
+
+void AKartPawn::CompleteLap()
+{
+	AKartGameMode* GameMode = GetWorld()->GetAuthGameMode<AKartGameMode>();
+	if (GameMode == nullptr || bHasFinishedRace)
+	{
+		return;
+	}
+	
+	NextCheckpoint = 1;
+	
+	if (CurrentLap >= GameMode->GetLapCount())
+	{
+		bHasFinishedRace = true;
+		FinishTime = GameMode->GetRaceTime();
+		GameMode->NotifyKartFinished(this);
+		return;
+	}
+	
+	++CurrentLap;
+}
+
+void AKartPawn::ResetRaceProgress()
+{
+	CurrentLap = 1;
+	NextCheckpoint = 1;
+	bHasFinishedRace = false;
+	FinishTime = 0.f;
 }
 
 void AKartPawn::NotifyControllerChanged()
@@ -232,7 +288,7 @@ void AKartPawn::UpdateSpeed(float DeltaTime)
 		CurrentSpeed = BoostSpeed;
 		return;
 	}
-	if (bIsGrounded)
+	if (!bIsGrounded)
 	{
 		return;
 	}
@@ -250,7 +306,7 @@ void AKartPawn::UpdateSpeed(float DeltaTime)
 		TargetSpeed = MaxReverseSpeed * ThrottleInput;
 		Rate = CurrentSpeed>0.f ? BrakeDeceleration : Acceleration;
 	}
-	CurrentSpeed = FMath::FInterpTo(CurrentSpeed,TargetSpeed,DeltaTime,Rate);
+	CurrentSpeed = FMath::FInterpConstantTo(CurrentSpeed,TargetSpeed,DeltaTime,Rate);
 }
 
 void AKartPawn::UpdateSteering(float DeltaTime)
@@ -398,15 +454,15 @@ void AKartPawn::UpdateCameraFieldOfView(float DeltaTime)
 		TargetFOV = FMath::Lerp(BaseFieldOfView, MaxFieldOfView, SpeedRatio);
 	}
 	
-	const float NewFOV = FMath::FInterpTo(Camera->FieldOfView, TargetFOV, DeltaTime, CurrentSpeed);
+	const float NewFOV = FMath::FInterpTo(Camera->FieldOfView, TargetFOV, DeltaTime, FieldOfViewInterSpeed);
 	Camera->SetFieldOfView(NewFOV);
 }
 
 int32 AKartPawn::TraceGroundUnderWheels(FVector& OutGroundPoint, FVector& OutGroundNormal) const
 {
 	const FVector Up = GetActorUpVector();
-	const FVector Forward = GetActorForwardVector();
-	const FVector Right = GetActorRightVector();
+	const FVector Forward = GetActorForwardVector() * GroundProbeHalfLength;
+	const FVector Right = GetActorRightVector() * GroundProbeHalfWidth;
 	
 	const FVector WheelOffsets[4] = {Forward - Right, Forward + Right, -Forward - Right, -Forward + Right};
 	
@@ -468,7 +524,7 @@ int32 AKartPawn::TraceGroundUnderWheels(FVector& OutGroundPoint, FVector& OutGro
 void AKartPawn::SetWheelRotation(UStaticMeshComponent* Wheel, const FRotator& BaseRotation, float SteerAngle) const
 {
 	const FQuat SpinAndSteer = FQuat(FRotator(0.f,SteerAngle, WheelSpinAngle));
-	Wheel->SetWorldRotation(SpinAndSteer * FQuat(BaseRotation));
+	Wheel->SetRelativeRotation(SpinAndSteer * FQuat(BaseRotation));
 }
 
 void AKartPawn::Jump()
@@ -478,6 +534,7 @@ void AKartPawn::Jump()
 		return;
 	}
 	VerticalSpeed = JumpVelocity;
+	bIsDrifting = false;
 }
 
 void AKartPawn::StartDrift()
@@ -513,7 +570,7 @@ void AKartPawn::EndDrift()
 
 void AKartPawn::StartBoost(float Duration)
 {
-	BoostTimeRemaining -= Duration;
+	BoostTimeRemaining = Duration;
 	CurrentSpeed = BoostSpeed;
 }
 
