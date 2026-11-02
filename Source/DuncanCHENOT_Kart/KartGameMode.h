@@ -39,6 +39,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Kart|Countdown")
 	void StartCountdown();
 	
+	UFUNCTION(BlueprintCallable, Category="Kart|Countdown")
+	int32 GetCountdownNumber() const { return CountdownNumber; }
+	
 	UFUNCTION(BlueprintPure, Category="Kart|Countdown")
 	int32 GetLapCount() const { return LapCount; }
 	

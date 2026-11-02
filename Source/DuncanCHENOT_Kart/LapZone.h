@@ -6,21 +6,44 @@
 #include "GameFramework/Actor.h"
 #include "LapZone.generated.h"
 
+class UBoxComponent;
+class UArrowComponent;
+class UPrimitiveComponent;
+struct FHitResult;
 UCLASS()
 class DUNCANCHENOT_KART_API ALapZone : public AActor
 {
 	GENERATED_BODY()
 	
-public:	
+public:
+	
 	// Sets default values for this actor's properties
 	ALapZone();
+	
+	UFUNCTION(BlueprintPure, Category="Kart|Lap")
+	int32 GetZoneIndex() const{return -1;};
+	
+	UFUNCTION(BlueprintPure, Category="Kart|Lap")
+	bool IsGoingRightWay(const FVector& MoveDirection) const;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	
+	//--------- Component----------
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Kart|Components")
+	TObjectPtr<UBoxComponent> Box;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Kart|Components")
+	TObjectPtr<UArrowComponent> Arrow;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Kart|Lap", meta=(ClampMin= "0"))
+	int32 ZoneIndex = 0;
+	
+	UPROPERTY(EditAnywhere, Category="Kart|Lap")
+	bool bShowInGame = true;
+	
+private:
+	UFUNCTION()
+	void HandleBeginOverlap(UPrimitiveComponent* OverlappedComponent,AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 };
