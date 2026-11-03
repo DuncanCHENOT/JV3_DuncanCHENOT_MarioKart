@@ -13,20 +13,46 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0dd1922-9dbd-439a-8324-10988fcbe621" name="Changes" comment="" />
+    <list default="true" id="e0dd1922-9dbd-439a-8324-10988fcbe621" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemComponent.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemComponent.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemData.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemData.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemData_Boost.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemData_Boost.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemPoolData.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemPoolData.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DuncanCHENOT_Kart.dir/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DuncanCHENOT_Kart.dir/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DuncanCHENOT_Kart.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DuncanCHENOT_Kart.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/DuncanCHENOT_Kart.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/DuncanCHENOT_Kart.Build.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/KartPlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/KartPlayerController.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7,
-  "fromUser": false
-}]]></component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemComponent.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemComponent.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemData.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemData.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemData_Boost.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemData_Boost.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemPoolData.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemPoolData.h" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3KdhJU5ekLrNNBoJsGU2JXiNfAr" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -39,6 +65,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Uproject.DuncanCHENOT_Kart.executor": "Run",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
@@ -57,7 +84,7 @@
         <option name="PLATFORM" value="Win64" />
         <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
         <option name="EXECUTABLE_PATH" value="C:/Program Files/Epic Games/UE_5.8/Engine/Binaries/Win64/UnrealEditor-Win64-DebugGame.exe" />
-        <option name="MANDATORY_PROGRAM_PARAMETERS" value=" &quot;D:\JV3_CHENOT_Duncan\JV3_DuncanCHENOT_MarioKart\DuncanCHENOT_Kart\DuncanCHENOT_Kart.uproject&quot;" />
+        <option name="MANDATORY_PROGRAM_PARAMETERS" value=" &quot;D:\JV3_CHENOT_Duncan\JV3_DuncanCHENOT_MarioKart\DuncanCHENOT_Kart.uproject&quot;" />
         <option name="CUSTOM_PROGRAM_PARAMETERS" value="" />
         <option name="WORKING_DIRECTORY" value="C:/Program Files/Epic Games/UE_5.8" />
         <option name="PASS_PARENT_ENVS" value="1" />
@@ -83,7 +110,7 @@
         <option name="PLATFORM" value="Win64" />
         <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
         <option name="EXECUTABLE_PATH" value="C:/Program Files/Epic Games/UE_5.8/Engine/Binaries/Win64/UnrealEditor.exe" />
-        <option name="MANDATORY_PROGRAM_PARAMETERS" value=" &quot;D:\JV3_CHENOT_Duncan\JV3_DuncanCHENOT_MarioKart\DuncanCHENOT_Kart\DuncanCHENOT_Kart.uproject&quot;" />
+        <option name="MANDATORY_PROGRAM_PARAMETERS" value=" &quot;D:\JV3_CHENOT_Duncan\JV3_DuncanCHENOT_MarioKart\DuncanCHENOT_Kart.uproject&quot;" />
         <option name="CUSTOM_PROGRAM_PARAMETERS" value="" />
         <option name="WORKING_DIRECTORY" value="C:/Program Files/Epic Games/UE_5.8" />
         <option name="PASS_PARENT_ENVS" value="1" />
