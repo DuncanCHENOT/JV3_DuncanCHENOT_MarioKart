@@ -8,7 +8,7 @@ class AKartPawn;
 class UTexture2D;
 
 UCLASS(Abstract, BlueprintType)
-class DuncanCHENOT_Kart_API UKartItemData : public UPrimaryDataAsset
+class DUNCANCHENOT_KART_API UKartItemData : public UPrimaryDataAsset
 {
 	GENERATED_BODY()
 	

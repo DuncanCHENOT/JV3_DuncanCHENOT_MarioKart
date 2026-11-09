@@ -11,9 +11,8 @@ class USphereComponent;
 class UStaticMeshComponent;
 class USpringArmComponent;
 class UCameraComponent;
-class UInputMappingContext;
-class UInputAction;
-struct FInputActionValue;
+class UKartItemComponent;
+
 
 UCLASS()
 class DUNCANCHENOT_KART_API AKartPawn : public APawn
@@ -25,7 +24,6 @@ public:
 	AKartPawn();
 	
 	virtual void Tick(float DeltaTime) override;
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
 	UFUNCTION(BlueprintCallable, Category = "Kart")
 	void SetCanMove(bool bInCanMove);
@@ -34,6 +32,24 @@ public:
 	bool CanMove() const {return bCanMove; }
 	
 	void EnterLapZone(int32 ZoneIndex);
+	
+	UFUNCTION(BlueprintCallable, Category = "Kart|Commands")
+	void SetThrottleInput(float Value);
+	
+	UFUNCTION(BlueprintCallable, Category = "Kart|Commands")
+	void SetSteerInput(float Value);
+	
+	UFUNCTION(BlueprintCallable, Category = "Kart|Commands")
+	void StartDrift();
+	
+	UFUNCTION(BlueprintCallable, Category = "Kart|Commands")
+	void EndDrift();
+	
+	UFUNCTION(BlueprintCallable, Category = "Kart|Commands")
+	void Jump();
+	
+	UFUNCTION(BlueprintCallable, Category = "Kart|Commands")
+	void UseItem();
 	
 	UFUNCTION(BlueprintCallable, Category = "Kart|Race")
 	void CompleteLap();
@@ -52,11 +68,21 @@ public:
 	
 	UFUNCTION(BlueprintPure, Category = "Kart|Race")
 	FVector GetMoveDirection() const;
+	
+	UFUNCTION(BlueprintCallable, Category = "Kart|Items")
+	void ApplyBoost(float Duration);
+
+	/*UFUNCTION(BlueprintCallable, Category = "Kart|Items")
+	void SpinOut(float Duration);
+	
+	UFUNCTION(BlueprintPure, Category = "Kart|Items")
+	void IsSpinningOut() const {return SpinOutTimeRemaining > 0.f; }*/
+	
+	UFUNCTION(BlueprintPure, Category = "Kart|Items")
+	UKartItemComponent* GetItemComponent() const {return ItemComponent; }
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-	
-	virtual void NotifyControllerChanged() override;
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Kart|Components")
 	TObjectPtr<USphereComponent> CollisionSphere;
@@ -82,24 +108,8 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Kart|Components")
 	TObjectPtr<UCameraComponent> Camera;
 	
-	UPROPERTY(EditAnywhere, Category = "Kart|Input")
-	TObjectPtr<UInputMappingContext> KartMappingContext;
-	
-	//Axe 1D
-	UPROPERTY(EditAnywhere, Category = "Kart|Input")
-	TObjectPtr<UInputAction> ThrottleAction;
-	
-	//Axe 1D 
-	UPROPERTY(EditAnywhere, Category = "Kart|Input")
-	TObjectPtr<UInputAction> SteerAction;
-	
-	//Button
-	UPROPERTY(EditAnywhere, Category = "Kart|Input")
-	TObjectPtr<UInputAction> DriftAction;
-	
-	//Button
-	UPROPERTY(EditAnywhere, Category = "Kart|Input")
-	TObjectPtr<UInputAction> JumpAction;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Kart|Components")
+	TObjectPtr<UKartItemComponent> ItemComponent;
 	
 	UPROPERTY(EditAnywhere, Category = "Kart|Movement")
 	float MaxForwardSpeed = 2500.f;
@@ -279,14 +289,6 @@ protected:
 	
 private:
 	
-	void OnThrottle(const FInputActionValue& Value);
-	void OnThrottleReleased(const FInputActionValue& Value);
-	void OnSteer(const FInputActionValue& Value);
-	void OnSteerReleased(const FInputActionValue& Value);
-	void OnDriftPressed(const FInputActionValue& Value);
-	void OnDriftReleased(const FInputActionValue& Value);
-	void OnJumpPressed(const FInputActionValue& Value);
-	
 	void UpdateGround(float DeltaTime);
 	void UpdateSpeed(float DeltaTime);
 	void UpdateSteering(float DeltaTime);
@@ -300,10 +302,6 @@ private:
 	
 	int32 TraceGroundUnderWheels(FVector& OutGroundPoint, FVector& OutGroundNormal) const;
 	
-	void Jump();
-	
-	void StartDrift();
-	void EndDrift();
 	void StartBoost(float Duration);
 	float GetCurrentMaxSpeed() const;
 	

@@ -19,7 +19,7 @@ struct FKartItemPoolEntry
 };
 
 UCLASS(BlueprintType)
-class DuncanCHENOT_Kart_API UKartItemPoolData : public UPrimaryDataAsset
+class DUNCANCHENOT_KART_API UKartItemPoolData : public UPrimaryDataAsset
 {
 	GENERATED_BODY()
 	
