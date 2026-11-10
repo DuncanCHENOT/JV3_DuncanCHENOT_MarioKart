@@ -15,7 +15,6 @@ void AKartPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// L'UI n'existe que pour le joueur qui joue sur cette machinex
 	if (!IsLocalController())
 	{
 		return;
@@ -52,7 +51,7 @@ void AKartPlayerController::SetupInputComponent()
 	Super::SetupInputComponent();
 	
 	UEnhancedInputComponent* EnhancedInput = Cast<UEnhancedInputComponent>(InputComponent);
-	if (EnhancedInput != nullptr)
+	if (EnhancedInput == nullptr)
 	{
 		return;
 	}
@@ -78,7 +77,6 @@ void AKartPlayerController::OnThrottle(const FInputActionValue& Value)
 	{
 		Kart->SetThrottleInput(Value.Get<float>());
 	}
-	//GEngine->AddOnScreenDebugMessage(0, 1000,FColor::Yellow,)
 }
 
 void AKartPlayerController::OnThrottleReleased(const FInputActionValue& Value)

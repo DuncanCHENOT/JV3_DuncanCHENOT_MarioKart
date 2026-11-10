@@ -72,11 +72,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Kart|Items")
 	void ApplyBoost(float Duration);
 
-	/*UFUNCTION(BlueprintCallable, Category = "Kart|Items")
+	UFUNCTION(BlueprintCallable, Category = "Kart|Items")
 	void SpinOut(float Duration);
 	
 	UFUNCTION(BlueprintPure, Category = "Kart|Items")
-	void IsSpinningOut() const {return SpinOutTimeRemaining > 0.f; }*/
+	bool IsSpinningOut() const {return SpinOutTimeRemaining > 0.f; }
 	
 	UFUNCTION(BlueprintPure, Category = "Kart|Items")
 	UKartItemComponent* GetItemComponent() const {return ItemComponent; }
@@ -220,7 +220,7 @@ protected:
 	float CameraDriftFollow = 1.f;
 	
 	UPROPERTY(EditAnywhere, Category = "Kart|Camera")
-	float CameraDriftInterSpeed = 3.f;
+	float CameraDriftInterpSpeed = 3.f;
 	
 	UPROPERTY(EditAnywhere, Category = "Kart|Camera", meta = (ClampMin = "0", ClampMax = "90"))
 	float CameraSlopeDeadZone = 10.f;
@@ -233,6 +233,12 @@ protected:
 	
 	UPROPERTY(EditAnywhere, Category = "Kart|Visual")
 	bool bShowDebug = true;
+	
+	UPROPERTY(EditAnywhere, Category = "Kart|SpinOut", meta = (ClampMin = "0"))
+	int32 SpinOutTurns = 2;
+	
+	UPROPERTY(EditAnywhere, Category = "Kart|SpinOut", meta = (ClampMin = "0", ClampMax = "1"))
+	float SpinOutSpeedFactor = 0.6f;
 	
 	/*---------State----------*/
 	UPROPERTY(EditAnywhere, Category = "Kart|State")
@@ -274,6 +280,15 @@ protected:
 	UPROPERTY(VisibleAnywhere, Category = "Kart|State")
 	bool bCanMove = true;
 	
+	UPROPERTY(VisibleAnywhere, Category = "Kart|State")
+	float SpinOutTimeRemaining = 0.f;
+	
+	UPROPERTY(VisibleAnywhere, Category = "Kart|State")
+	float SpinOutTotalTime = 0.f;
+	
+	UPROPERTY(VisibleAnywhere, Category = "Kart|State")
+	float SpinOutYaw = 0.f;
+	
 	/*-----Race-----*/
 	UPROPERTY(VisibleAnywhere, Category = "Kart|Race")
 	int32 CurrentLap = 1;
@@ -307,12 +322,16 @@ private:
 	
 	void SetWheelRotation(UStaticMeshComponent* Wheel, const FRotator& BaseRotation, float SteerAngle) const;
 	
+	void UpdateSpinOut(float DeltaTime);
+	
 	FRotator BodyBaseRotation;
 	FRotator SpringArmBaseRotation;
 	FRotator WheelFrontLeftBaseRotation;
 	FRotator WheelFrontRightBaseRotation;
 	FRotator WheelRearLeftBaseRotation;
 	FRotator WheelRearRightBaseRotation;
+	
+	float BodySlideYaw = 0.f;
 	
 	float CameraSlideYaw = 0.f;
 	float CameraSlopePitch = 0.f;
