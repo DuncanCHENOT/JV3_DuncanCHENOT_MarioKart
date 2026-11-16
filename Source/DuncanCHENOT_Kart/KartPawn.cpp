@@ -359,8 +359,7 @@ void AKartPawn::UpdateVisuals(float DeltaTime)
 	SetWheelRotation(WheelRearRight, WheelRearRightBaseRotation, 0.f);
 	
 	const float TargetSlideYaw = bIsDrifting ? DriftDirection * DriftSlideAngle * FMath::SmoothStep(0.f,1.f, DriftBlend) : 0.f;
-	const float CurrentSlideYaw = BodyMesh->GetRelativeRotation().Yaw - BodyBaseRotation.Yaw;
-	BodySlideYaw = FMath::FInterpTo(CurrentSlideYaw, TargetSlideYaw, DeltaTime, DriftSlideInterSpeed);
+	BodySlideYaw = FMath::FInterpTo(BodySlideYaw, TargetSlideYaw, DeltaTime, DriftSlideInterSpeed);
 	
 	FRotator BodyRotation = BodyBaseRotation;
 	BodyRotation.Yaw += BodySlideYaw + SpinOutYaw;

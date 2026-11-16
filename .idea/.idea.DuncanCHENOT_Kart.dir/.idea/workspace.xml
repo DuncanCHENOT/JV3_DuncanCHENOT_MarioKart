@@ -14,14 +14,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0dd1922-9dbd-439a-8324-10988fcbe621" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemData_SpawnActor.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemData_SpawnActor.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemHazard.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemHazard.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemProjectile.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemProjectile.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemWidget.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemWidget.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DuncanCHENOT_Kart.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DuncanCHENOT_Kart.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Game/Blueprints/Controller/BP_KartPlayerController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Game/Blueprints/Controller/BP_KartPlayerController.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Game/Inputs/IMC_Default.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Game/Inputs/IMC_Default.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/KartPawn.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/KartPawn.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/KartPawn.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/KartPawn.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/KartPlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/KartPlayerController.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +45,14 @@
     <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemData_Boost.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemData_SpawnActor.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemData_SpawnActor.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemHazard.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemHazard.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemPoolData.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemPoolData.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemProjectile.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemProjectile.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemWidget.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemWidget.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/World/KartItemBox.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/DuncanCHENOT_Kart/World/KartItemBox.h" root0="FORCE_HIGHLIGHTING" />
   </component>

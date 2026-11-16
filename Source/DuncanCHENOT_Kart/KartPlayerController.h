@@ -8,6 +8,7 @@
 
 class UKartCountDownWidget;
 class UKartWidget_HUD;
+class UKartItemWidget;
 class UInputMappingContext;
 class UInputAction;
 class AKartPawn;
@@ -27,6 +28,8 @@ protected:
 	TSubclassOf<UKartCountDownWidget> CountDownWidgetClass;
 	UPROPERTY(EditAnywhere, Category = "Kart|UI")
 	TSubclassOf<UKartWidget_HUD> HUDWidgetClass;
+	UPROPERTY(EditAnywhere, Category = "Kart|UI")
+	TSubclassOf<UKartItemWidget> ItemWidgetClass;
 	
 	UPROPERTY(EditAnywhere, Category = "Kart|Input")
 	TObjectPtr<UInputMappingContext> KartMappingContext;
@@ -62,4 +65,6 @@ private:
 	TObjectPtr<UKartCountDownWidget> CountDownWidget;
 	UPROPERTY()
 	TObjectPtr<UKartWidget_HUD> HUDWidget;
+	UPROPERTY()
+	TObjectPtr<UKartItemWidget> ItemWidget;
 };
