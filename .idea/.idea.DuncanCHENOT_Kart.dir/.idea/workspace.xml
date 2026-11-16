@@ -14,14 +14,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0dd1922-9dbd-439a-8324-10988fcbe621" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemHazard.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemHazard.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemProjectile.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemProjectile.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemWidget.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/Item/KartItemWidget.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DuncanCHENOT_Kart.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DuncanCHENOT_Kart.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/KartPawn.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/DuncanCHENOT_Kart/KartPawn.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
